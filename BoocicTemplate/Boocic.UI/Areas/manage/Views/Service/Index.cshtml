@@ -1,38 +1,57 @@
-﻿
+﻿@model List<Service>
+@{
+    var counter = 0;
+}
+@section cssLinks{
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" rel="stylesheet">
+}
+    <style>
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
 
-<style>
-    .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 10px;
-    }
-</style>
-<div class="container-fluid">
-    <div class="header">
-        <h1 class="title">Services Table</h1>
-        <a class="btn btn-primary">Create</a>
-    </div>
-    <table class="table table-striped shadow">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>
-                    <a class="btn btn-warning">Update</a>
-                    <a class="btn btn-danger">Delete</a>
-                    <a class="btn btn-secondary">SoftDelete</a>
-                </td>
-            </tr>
+        .img {
+            width: 100px;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="header">
+            <h1 class="title">Services Table</h1>
+            <a class="btn btn-primary" asp-action="Create" asp-controller="service">Create</a>
+        </div>
+        <table class="table table-striped shadow">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var service in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@service.Category</td>
+                    <td><img src="~/uploads/Services-Images/@service.ImgUrl" class="img" /></td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Update" asp-controller="service" asp-route-id="@service.Id">Update</a>
+                        <a class="btn btn-danger delete-btn" asp-action="Delete" asp-controller="service" asp-route-id="@service.Id">Delete</a>
+                        <a class="btn btn-secondary" asp-action="SoftDelete" asp-controller="service" asp-route-id="@service.Id">SoftDelete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
+@section jsLinks{
+    <script src="~/admin/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.all.min.js"></script>
+
+}

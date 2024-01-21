@@ -1,5 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Setting>
 @{
+    var counter = 0;
 }
+<style>
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .img {
+        width: 100px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="header">
+        <h1 class="title">Settings Table</h1>
+    </div>
+    <table class="table table-striped shadow">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Key</th>
+                <th scope="col">Value</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var setting in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@setting.Key</td>
+                    <td>@setting.Value</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Update" asp-controller="setting" asp-route-id="@setting.Id">Update</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

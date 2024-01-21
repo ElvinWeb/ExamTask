@@ -1,22 +1,31 @@
-﻿
+﻿@model Service
 <style>
     .form-container {
         padding: 50px;
         max-width: 600px;
         border-radius: 5px;
+        margin-top: 50px;
     }
 </style>
-<div class="form-container container shadow">
+<div class=" form-container container shadow">
+
     <h1 class="title">Create a Service</h1>
 
     <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <label asp-for="Category" class="form-label">Category</label>
+            <input asp-for="Category" class="form-control">
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Image" class="form-label">Image</label>
+            <input asp-for="Image" class="form-control">
+            <span asp-validation-for="Image" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a class="btn btn-primary">Back To Home</a>
+        <a class="btn btn-primary" asp-action="Index" asp-controller="Service">Back To Home</a>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mt-2"></div>
     </form>
 </div>

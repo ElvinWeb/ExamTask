@@ -1,4 +1,6 @@
-﻿using Boocic.Business.Services;
+﻿using Boocic.Business.CustomExceptions.Common;
+using Boocic.Business.CustomExceptions.ServiceImage;
+using Boocic.Business.Services;
 using Boocic.Core.Entites;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +13,12 @@ namespace Boocic.UI.Areas.manage.Controllers
 
         public ServiceController(IServicesService servicesService)
         {
-           _servicesService = servicesService;
+            _servicesService = servicesService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<Service> services = await _servicesService.GetAllServiceAsync();
+            return View(services);
         }
         [HttpGet]
         public IActionResult Create()
@@ -24,32 +27,130 @@ namespace Boocic.UI.Areas.manage.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Service service)
+        public async Task<IActionResult> Create(Service service)
         {
-            return View();
+            if (!ModelState.IsValid) return View();
+
+            try
+            {
+                await _servicesService.CreateAsync(service);
+            }
+            catch (InvalidImageContentTypeOrSizeException ex)
+            {
+                ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View();
+            }
+            catch (ImageRequiredException ex)
+            {
+                ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "unexpected error is occur!");
+                return View();
+            }
+
+            return RedirectToAction("index", "service");
         }
         [HttpGet]
-        public IActionResult Update()
+        public async Task<IActionResult> Update(int id)
         {
-            return View();
+            Service service = null;
+
+            try
+            {
+                service = await _servicesService.GetServiceAsync(id);
+            }
+            catch (InvalidIdOrBlowThanZeroException ex)
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "unexpected error is occur!");
+                return View();
+            }
+
+            return View(service);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Service service)
+        public async Task<IActionResult> Update(Service service)
         {
-            return View();
+            if (!ModelState.IsValid) return View();
+
+            try
+            {
+                await _servicesService.UpdateAsync(service);
+            }
+            catch (InvalidEntityException ex)
+            {
+                return View();
+            }
+            catch (InvalidImageContentTypeOrSizeException ex)
+            {
+                ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "unexpected error is occur!");
+                return View();
+            }
+
+            return RedirectToAction("index", "service");
         }
         [HttpGet]
-        public IActionResult SoftDelete(int id)
+        public async Task<IActionResult> SoftDelete(int id)
         {
-            return View();
+            try
+            {
+                await _servicesService.SoftDelete(id);
+            }
+            catch (InvalidIdOrBlowThanZeroException ex)
+            {
+                return View();
+            }
+            catch (InvalidEntityException ex)
+            {
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "unexpected error is occur!");
+                return View();
+            }
+
+            return RedirectToAction("index", "service");
 
 
         }
         [HttpGet]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            try
+            {
+                await _servicesService.DeleteAsync(id);
+            }
+            catch (InvalidIdOrBlowThanZeroException ex)
+            {
+                return View();
+            }
+            catch (InvalidEntityException ex)
+            {
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "unexpected error is occur!");
+                return View();
+            }
+
+
+            return Ok();
         }
 
     }

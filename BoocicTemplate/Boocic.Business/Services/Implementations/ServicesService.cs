@@ -42,6 +42,8 @@ namespace Boocic.Business.Services.Implementations
             }
 
             service.ImgUrl = await Helper.GetFileName(_env.WebRootPath, "uploads/Services-Images", service.Image);
+            service.CreatedDate = DateTime.UtcNow.AddHours(4);
+            service.UpdatedDate = DateTime.UtcNow.AddHours(4);
 
 
             await _serviceRepository.CreateAsync(service);
@@ -72,11 +74,11 @@ namespace Boocic.Business.Services.Implementations
             return _serviceRepository.GetAllAsync(x => !x.IsDeleted);
         }
 
-        public Task<Service> GetServiceAsync(int id)
+        public async Task<Service> GetServiceAsync(int id)
         {
             if (id == null || id <= 0) throw new InvalidIdOrBlowThanZeroException();
 
-            return _serviceRepository.GetByIdAsync(x => x.Id == id && !x.IsDeleted);
+            return await _serviceRepository.GetByIdAsync(x => x.Id == id && !x.IsDeleted);
         }
 
         public async Task SoftDelete(int id)
@@ -119,6 +121,7 @@ namespace Boocic.Business.Services.Implementations
             }
 
             wantedService.Category = service.Category;
+            wantedService.UpdatedDate = DateTime.UtcNow.AddHours(4);
 
             await _serviceRepository.SaveAsync();
         }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7F/QF1R1Q3Ik53wbmcVaGQ8xbXBPwZIyjCiA3YaYqSM=",
+  "Hash": "drVZdXp0c9ZrOz5jLboMcrIoIPdIjyIXkTtqXsD+hOY=",
   "Source": "Boocic.UI",
   "BasePath": "_content/Boocic.UI",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\admin\\js\\demo\\datatables-demo.js"
+    },
+    {
+      "Identity": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\admin\\js\\main.js",
+      "SourceId": "Boocic.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\",
+      "BasePath": "_content/Boocic.UI",
+      "RelativePath": "admin/js/main.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\admin\\js\\main.js"
     },
     {
       "Identity": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\admin\\js\\sb-admin-2.js",
@@ -33726,6 +33743,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\slider-setting.js"
+    },
+    {
+      "Identity": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\uploads\\Services-Images\\3b44f85f-dff9-4d86-a9e5-e115579a7d962.jpg",
+      "SourceId": "Boocic.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\",
+      "BasePath": "_content/Boocic.UI",
+      "RelativePath": "uploads/Services-Images/3b44f85f-dff9-4d86-a9e5-e115579a7d962.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Services-Images\\3b44f85f-dff9-4d86-a9e5-e115579a7d962.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\uploads\\Services-Images\\4f0599a9-9100-45db-9eab-3d5af26c13b91.jpg",
+      "SourceId": "Boocic.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\",
+      "BasePath": "_content/Boocic.UI",
+      "RelativePath": "uploads/Services-Images/4f0599a9-9100-45db-9eab-3d5af26c13b91.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Services-Images\\4f0599a9-9100-45db-9eab-3d5af26c13b91.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\uploads\\Services-Images\\7033414e-8868-4da0-9571-7918903dc9d06.jpg",
+      "SourceId": "Boocic.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\",
+      "BasePath": "_content/Boocic.UI",
+      "RelativePath": "uploads/Services-Images/7033414e-8868-4da0-9571-7918903dc9d06.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Services-Images\\7033414e-8868-4da0-9571-7918903dc9d06.jpg"
     }
   ]
 }

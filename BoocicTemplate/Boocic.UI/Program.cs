@@ -1,4 +1,9 @@
+using Boocic.Business;
+using Boocic.Core.Entites;
+using Boocic.Data;
 using Boocic.Data.DAL;
+using Boocic.UI.ViewService;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Boocic.UI
@@ -11,10 +16,20 @@ namespace Boocic.UI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<LayoutService>();
+            builder.Services.ServicesRegister();
+            builder.Services.RepositoriesRegister();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("default"));
             });
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequiredLength = 8;
+
+                options.User.RequireUniqueEmail = false;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             var app = builder.Build();
 

@@ -37,6 +37,7 @@ namespace Boocic.Business.Services.Implementations
             if (wantedSetting == null) throw new InvalidEntityException();
 
             wantedSetting.Value = setting.Value;
+            wantedSetting.UpdatedDate = DateTime.UtcNow.AddHours(4);
 
             await _settingRepository.SaveAsync();
         }
