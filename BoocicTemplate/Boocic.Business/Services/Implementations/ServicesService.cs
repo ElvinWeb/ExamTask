@@ -1,5 +1,9 @@
-﻿using Boocic.Core.Entites;
+﻿using Boocic.Business.CustomExceptions.Common;
+using Boocic.Business.CustomExceptions.ServiceImage;
+using Boocic.Business.Helpers;
+using Boocic.Core.Entites;
 using Boocic.Core.Repositories;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,40 +15,112 @@ namespace Boocic.Business.Services.Implementations
     public class ServicesService : IServicesService
     {
         private readonly IServiceRepository _serviceRepository;
+        private readonly IWebHostEnvironment _env;
 
-        public ServicesService(IServiceRepository serviceRepository)
+        public ServicesService(IServiceRepository serviceRepository, IWebHostEnvironment env)
         {
             _serviceRepository = serviceRepository;
+            _env = env;
         }
 
-        public Task CreateAsync(Service service)
+        public async Task CreateAsync(Service service)
         {
-            throw new NotImplementedException();
+            if (service.Image != null)
+            {
+                if (service.Image.ContentType != "image/png" && service.Image.ContentType != "image/jpeg")
+                {
+                    throw new InvalidImageContentTypeOrSizeException("Image", "Image content type is wrong!");
+                }
+                if (service.Image.ContentType != "image/png" && service.Image.ContentType != "image/jpeg")
+                {
+                    throw new InvalidImageContentTypeOrSizeException("Image", "Image size must be less than 2 mb!");
+                }
+            }
+            else
+            {
+                throw new ImageRequiredException("Image", "Image must be choosed!");
+            }
+
+            service.ImgUrl = await Helper.GetFileName(_env.WebRootPath, "uploads/Services-Images", service.Image);
+
+
+            await _serviceRepository.CreateAsync(service);
+            await _serviceRepository.SaveAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            if (id == null || id <= 0) throw new InvalidIdOrBlowThanZeroException();
+
+            Service wantedService = await _serviceRepository.GetByIdAsync(x => x.Id == id && !x.IsDeleted);
+
+            if (wantedService == null) throw new InvalidEntityException();
+
+            string filePath = Path.Combine(_env.WebRootPath, "uploads/Services-Images", wantedService.ImgUrl);
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            _serviceRepository.Delete(wantedService);
+            await _serviceRepository.SaveAsync();
         }
 
         public Task<List<Service>> GetAllServiceAsync()
         {
-            throw new NotImplementedException();
+            return _serviceRepository.GetAllAsync(x => !x.IsDeleted);
         }
 
         public Task<Service> GetServiceAsync(int id)
         {
-            throw new NotImplementedException();
+            if (id == null || id <= 0) throw new InvalidIdOrBlowThanZeroException();
+
+            return _serviceRepository.GetByIdAsync(x => x.Id == id && !x.IsDeleted);
         }
 
-        public Task SoftDelete(int id)
+        public async Task SoftDelete(int id)
         {
-            throw new NotImplementedException();
+            if (id == null || id <= 0) throw new InvalidIdOrBlowThanZeroException();
+
+            Service wantedService = await _serviceRepository.GetByIdAsync(x => x.Id == id && !x.IsDeleted);
+
+            if (wantedService == null) throw new InvalidEntityException();
+
+            wantedService.IsDeleted = !wantedService.IsDeleted;
+
+            await _serviceRepository.SaveAsync();
         }
 
-        public Task UpdateAsync(Service service)
+        public async Task UpdateAsync(Service service)
         {
-            throw new NotImplementedException();
+            Service wantedService = await _serviceRepository.GetByIdAsync(x => x.Id == service.Id && !x.IsDeleted);
+            if (wantedService == null) throw new InvalidEntityException();
+
+            if (service.Image != null)
+            {
+                if (service.Image.ContentType != "image/png" && service.Image.ContentType != "image/jpeg")
+                {
+                    throw new InvalidImageContentTypeOrSizeException("Image", "Image content type is wrong!");
+                }
+                if (service.Image.ContentType != "image/png" && service.Image.ContentType != "image/jpeg")
+                {
+                    throw new InvalidImageContentTypeOrSizeException("Image", "Image size must be less than 2 mb!");
+                }
+
+                string oldFilePath = Path.Combine(_env.WebRootPath, "uploads/Services-Images", wantedService.ImgUrl);
+
+                if (File.Exists(oldFilePath))
+                {
+                    File.Delete(oldFilePath);
+                }
+
+                wantedService.ImgUrl = await Helper.GetFileName(_env.WebRootPath, "uploads/Services-Images", service.Image);
+            }
+
+            wantedService.Category = service.Category;
+
+            await _serviceRepository.SaveAsync();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Boocic.Business.Services
     public interface ISettingService
     {
         Task UpdateAsync(Setting setting);
-        Task<List<Setting>> GetAllServiceAsync();
-        Task<Setting> GetServiceAsync(int id);
+        Task<List<Setting>> GetAllSettingAsync();
+        Task<Setting> GetSettingAsync(int id);
     }
 }

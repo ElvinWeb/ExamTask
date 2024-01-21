@@ -1,5 +1,7 @@
-﻿using Boocic.Core.Entites;
+﻿using Boocic.Business.CustomExceptions.Common;
+using Boocic.Core.Entites;
 using Boocic.Core.Repositories;
+using Boocic.Data.Repositories.Implemetations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,19 +19,26 @@ namespace Boocic.Business.Services.Implementations
             _settingRepository = settingRepository;
         }
 
-        public Task<List<Setting>> GetAllServiceAsync()
+        public Task<List<Setting>> GetAllSettingAsync()
         {
-            throw new NotImplementedException();
+            return _settingRepository.GetAllAsync(x => !x.IsDeleted);
         }
 
-        public Task<Setting> GetServiceAsync(int id)
+        public Task<Setting> GetSettingAsync(int id)
         {
-            throw new NotImplementedException();
+            if (id == null || id <= 0) throw new InvalidIdOrBlowThanZeroException();
+
+            return _settingRepository.GetByIdAsync(x => x.Id == id && !x.IsDeleted);
         }
 
-        public Task UpdateAsync(Setting setting)
+        public async Task UpdateAsync(Setting setting)
         {
-            throw new NotImplementedException();
+            Setting wantedSetting = await _settingRepository.GetByIdAsync(x => x.Id == setting.Id && !x.IsDeleted);
+            if (wantedSetting == null) throw new InvalidEntityException();
+
+            wantedSetting.Value = setting.Value;
+
+            await _settingRepository.SaveAsync();
         }
     }
 }

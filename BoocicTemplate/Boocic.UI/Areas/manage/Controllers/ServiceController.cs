@@ -1,4 +1,5 @@
-﻿using Boocic.Core.Entites;
+﻿using Boocic.Business.Services;
+using Boocic.Core.Entites;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Boocic.UI.Areas.manage.Controllers
@@ -6,6 +7,12 @@ namespace Boocic.UI.Areas.manage.Controllers
     [Area("manage")]
     public class ServiceController : Controller
     {
+        private readonly IServicesService _servicesService;
+
+        public ServiceController(IServicesService servicesService)
+        {
+           _servicesService = servicesService;
+        }
         public IActionResult Index()
         {
             return View();

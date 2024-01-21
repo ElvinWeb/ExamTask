@@ -1,2 +1,38 @@
 ﻿
 
+<style>
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="header">
+        <h1 class="title">Services Table</h1>
+        <a class="btn btn-primary">Create</a>
+    </div>
+    <table class="table table-striped shadow">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>
+                    <a class="btn btn-warning">Update</a>
+                    <a class="btn btn-danger">Delete</a>
+                    <a class="btn btn-secondary">SoftDelete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
