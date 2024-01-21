@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Boocic.Business.CustomExceptions.User
 {
-    internal class InvalidCredentials : Exception
+    public class InvalidCredentials : Exception
     {
         public string PropertyName { get; set; }
         public InvalidCredentials()

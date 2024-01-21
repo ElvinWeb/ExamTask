@@ -1,4 +1,5 @@
 ﻿using Boocic.Core.Entites;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Boocic.Data.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -17,5 +18,6 @@ namespace Boocic.Data.DAL
 
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

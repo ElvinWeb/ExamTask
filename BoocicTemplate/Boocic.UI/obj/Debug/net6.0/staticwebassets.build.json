@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "drVZdXp0c9ZrOz5jLboMcrIoIPdIjyIXkTtqXsD+hOY=",
+  "Hash": "LZZdZgkMsXw03h+E3Q2Kh6yM/BPPANu0S3NA1QHlxo4=",
   "Source": "Boocic.UI",
   "BasePath": "_content/Boocic.UI",
   "Mode": "Default",
@@ -33760,6 +33760,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Services-Images\\3b44f85f-dff9-4d86-a9e5-e115579a7d962.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\uploads\\Services-Images\\4cf8f9ac-6667-43f3-a53c-3182ed842615aboutimg.png",
+      "SourceId": "Boocic.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\",
+      "BasePath": "_content/Boocic.UI",
+      "RelativePath": "uploads/Services-Images/4cf8f9ac-6667-43f3-a53c-3182ed842615aboutimg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Services-Images\\4cf8f9ac-6667-43f3-a53c-3182ed842615aboutimg.png"
     },
     {
       "Identity": "C:\\Users\\II novbe\\Documents\\ExamTask\\BoocicTemplate\\Boocic.UI\\wwwroot\\uploads\\Services-Images\\4f0599a9-9100-45db-9eab-3d5af26c13b91.jpg",

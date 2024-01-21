@@ -2,11 +2,13 @@
 using Boocic.Business.CustomExceptions.ServiceImage;
 using Boocic.Business.Services;
 using Boocic.Core.Entites;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Boocic.UI.Areas.manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "SuperAdmin")]
     public class ServiceController : Controller
     {
         private readonly IServicesService _servicesService;

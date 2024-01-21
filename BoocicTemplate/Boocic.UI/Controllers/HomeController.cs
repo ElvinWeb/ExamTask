@@ -1,17 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Boocic.Business.Services;
+using Boocic.Core.Entites;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Boocic.UI.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly IServicesService _servicesService;
+
+        public HomeController(IServicesService servicesService)
         {
-                
+            _servicesService = servicesService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<Service>  services = await _servicesService.GetAllServiceAsync();
+            return View(services);
         }
     }
 }

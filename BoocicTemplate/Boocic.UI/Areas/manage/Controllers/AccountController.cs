@@ -1,4 +1,5 @@
-﻿using Boocic.Business.Services;
+﻿using Boocic.Business.CustomExceptions.User;
+using Boocic.Business.Services;
 using Boocic.Business.ViewModels;
 using Boocic.Core.Entites;
 using Microsoft.AspNetCore.Identity;
@@ -30,49 +31,72 @@ namespace Boocic.UI.Areas.manage.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult Login(AdminLoginViewModel adminLoginViewModel)
+        public async Task<IActionResult> Login(AdminLoginViewModel adminLoginViewModel)
         {
-            return View();
+            if (!ModelState.IsValid) return View();
+
+            try
+            {
+                await _accountService.Login(adminLoginViewModel);
+            }
+            catch (InvalidCredentials ex)
+            {
+                ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(" ", "Unexpected error is occur!");
+                return View();
+            }
+
+
+            return RedirectToAction("index", "service");
         }
         [HttpGet]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await _accountService.Logout();
+
+            return RedirectToAction("login", "account");
         }
 
-        public async Task<IActionResult> CreateAdmin()
-        {
-            User admin = new User
-            {
-                Fullname = "Elvin Sarkarov",
-                UserName = "Admin1",
-            };
+        #region Admin Create, AddRole, CreateRole operations
 
-            var result = await _userManager.CreateAsync(admin, "@Admin1234");
+        //public async Task<IActionResult> CreateAdmin()
+        //{
+        //    User admin = new User
+        //    {
+        //        Fullname = "Elvin Sarkarov",
+        //        UserName = "Admin1",
+        //    };
 
-            return Ok(result);
-        }
+        //    var result = await _userManager.CreateAsync(admin, "@Admin1234");
 
-        public async Task<IActionResult> CreateRoles()
-        {
-            IdentityRole role1 = new IdentityRole("SuperAdmin");
-            IdentityRole role2 = new IdentityRole("Admin");
-            IdentityRole role3 = new IdentityRole("Member");
+        //    return Ok(result);
+        //}
 
-            await _roleManager.CreateAsync(role1);
-            await _roleManager.CreateAsync(role2);
-            await _roleManager.CreateAsync(role3);
+        //public async Task<IActionResult> CreateRoles()
+        //{
+        //    IdentityRole role1 = new IdentityRole("SuperAdmin");
+        //    IdentityRole role2 = new IdentityRole("Admin");
+        //    IdentityRole role3 = new IdentityRole("Member");
 
-            return Ok("rollar yarandi");
-        }
+        //    await _roleManager.CreateAsync(role1);
+        //    await _roleManager.CreateAsync(role2);
+        //    await _roleManager.CreateAsync(role3);
 
-        public async Task<IActionResult> AddRole()
-        {
-            var admin = await _userManager.FindByNameAsync("Admin1");
+        //    return Ok("rollar yarandi");
+        //}
 
-            var result = await _userManager.AddToRoleAsync(admin, "SuperAdmin");
+        //public async Task<IActionResult> AddRole()
+        //{
+        //    var admin = await _userManager.FindByNameAsync("Admin1");
 
-            return Ok("rol elave edildi!");
-        }
+        //    var result = await _userManager.AddToRoleAsync(admin, "SuperAdmin");
+
+        //    return Ok("rol elave edildi!");
+        //}
+        #endregion
     }
 }

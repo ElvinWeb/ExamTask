@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Service>
 <section class="slider_section">
     <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
         <div class="carousel-inner">
@@ -122,78 +122,23 @@
     </div>
     <div class="container margin-r-l">
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
-                <div class="service-box">
-                    <figure>
-                        <a href="images/1.jpg" class="fancybox" rel="ligthbox">
-                            <img src="~/assets/images/1.jpg" class="zoom img-fluid " alt="">
-                        </a>
-                        <span class="hoverle">
-                            <a href="images/1.jpg" class="fancybox" rel="ligthbox">Food</a>
-                        </span>
-                    </figure>
+            @foreach (var service in Model)
+            {
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
+                    <div class="service-box">
+                        <figure>
+                            <a href="~/uploads/Services-Images/@service.ImgUrl" class="fancybox" rel="ligthbox">
+                                <img src="~/uploads/Services-Images/@service.ImgUrl" class="zoom img-fluid " alt="">
+                            </a>
+                            <span class="hoverle">
+                                <a href="~/uploads/Services-Images/@service.ImgUrl" class="fancybox" rel="ligthbox">@service.Category</a>
+                            </span>
+                        </figure>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
-                <div class="service-box">
-                    <figure>
-                        <a href="images/2.jpg" class="fancybox" rel="ligthbox">
-                            <img src="~/assets/images/2.jpg" class="zoom img-fluid " alt="">
-                        </a>
-                        <span class="hoverle">
-                            <a href="images/1.jpg" class="fancybox" rel="ligthbox">Fashion</a>
-                        </span>
-                    </figure>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
-                <div class="service-box">
-                    <figure>
-                        <a href="images/3.jpg" class="fancybox" rel="ligthbox">
-                            <img src="~/assets/images/3.jpg" class="zoom img-fluid " alt="">
-                        </a>
-                        <span class="hoverle">
-                            <a href="images/3.jpg" class="fancybox" rel="ligthbox">Booking</a>
-                        </span>
-                    </figure>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
-                <div class="service-box">
-                    <figure>
-                        <a href="images/4.jpg" class="fancybox" rel="ligthbox">
-                            <img src="~/assets/images/4.jpg" class="zoom img-fluid " alt="">
-                        </a>
-                        <span class="hoverle">
-                            <a href="images/4.jpg" class="fancybox" rel="ligthbox">Marketing</a>
-                        </span>
-                    </figure>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
-                <div class="service-box">
-                    <figure>
-                        <a href="images/5.jpg" class="fancybox" rel="ligthbox">
-                            <img src="~/assets/images/5.jpg" class="zoom img-fluid " alt="">
-                        </a>
-                        <span class="hoverle">
-                            <a href="images/5.jpg" class="fancybox" rel="ligthbox">Design</a>
-                        </span>
-                    </figure>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
-                <div class="service-box">
-                    <figure>
-                        <a href="images/6.jpg" class="fancybox" rel="ligthbox">
-                            <img src="~/assets/images/6.jpg" class="zoom img-fluid " alt="">
-                        </a>
-                        <span class="hoverle">
-                            <a href="images/6.jpg" class="fancybox" rel="ligthbox">Making Food</a>
-                        </span>
-                    </figure>
-                </div>
-            </div>
+            }
+
+
         </div>
     </div>
 </div>

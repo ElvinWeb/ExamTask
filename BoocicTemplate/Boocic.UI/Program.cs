@@ -28,6 +28,7 @@ namespace Boocic.UI
                 options.Password.RequiredUniqueChars = 0;
                 options.Password.RequiredLength = 8;
 
+
                 options.User.RequireUniqueEmail = false;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
@@ -45,7 +46,7 @@ namespace Boocic.UI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

@@ -1,11 +1,14 @@
 ﻿using Boocic.Business.CustomExceptions.Common;
 using Boocic.Business.Services;
 using Boocic.Core.Entites;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Boocic.UI.Areas.manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "SuperAdmin")]
     public class SettingController : Controller
     {
         private readonly ISettingService _settingService;

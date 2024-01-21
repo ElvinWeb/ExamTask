@@ -10,5 +10,6 @@ namespace Boocic.Business.Services
     public interface IAccountService
     {
         Task Login(AdminLoginViewModel adminLoginViewModel);
+        Task Logout();
     }
 }
