@@ -1,0 +1,17 @@
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\bin\Debug\net6.0\Boocic.Data.deps.json
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\bin\Debug\net6.0\Boocic.Data.dll
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\bin\Debug\net6.0\Boocic.Data.pdb
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.csproj.AssemblyReference.cache
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.AssemblyInfoInputs.cache
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.AssemblyInfo.cs
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.csproj.CoreCompileInputs.cache
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.dll
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\refint\Boocic.Data.dll
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.pdb
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\ref\Boocic.Data.dll
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\bin\Debug\net6.0\Boocic.Core.dll
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\bin\Debug\net6.0\Boocic.Core.pdb
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.csproj.CopyComplete
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\bin\Debug\net6.0\Boocic.Data.runtimeconfig.json
+C:\Users\II novbe\Documents\ExamTask\BoocicTemplate\Boocic.Data\obj\Debug\net6.0\Boocic.Data.genruntimeconfig.cache
