@@ -16,6 +16,7 @@ namespace Boocic.UI.Controllers
         public async Task<IActionResult> Index()
         {
             List<Service>  services = await _servicesService.GetAllServiceAsync();
+
             return View(services);
         }
     }

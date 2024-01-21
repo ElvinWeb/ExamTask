@@ -66,7 +66,7 @@ namespace Boocic.UI.Areas.manage.Controllers
             }
             catch (InvalidIdOrBlowThanZeroException ex)
             {
-                return View();
+                return View("error");
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace Boocic.UI.Areas.manage.Controllers
             }
             catch (InvalidEntityException ex)
             {
-                return View();
+                return View("error");
             }
             catch (InvalidImageContentTypeOrSizeException ex)
             {
@@ -112,17 +112,16 @@ namespace Boocic.UI.Areas.manage.Controllers
             }
             catch (InvalidIdOrBlowThanZeroException ex)
             {
-                return View();
+                return View("error");
             }
             catch (InvalidEntityException ex)
             {
-                return View();
+                return View("error");
 
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "unexpected error is occur!");
-                return View();
+                return View("error");
             }
 
             return RedirectToAction("index", "service");
@@ -130,6 +129,7 @@ namespace Boocic.UI.Areas.manage.Controllers
 
         }
         [HttpGet]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete(int id)
         {
             try
@@ -147,8 +147,7 @@ namespace Boocic.UI.Areas.manage.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "unexpected error is occur!");
-                return View();
+                return View("error");
             }
 
 

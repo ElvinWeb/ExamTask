@@ -106,17 +106,34 @@
                         <div class="address">
                             <h3>Social Media </h3>
                             <ul class="contant_icon">
-                                <li><img src="~/assets/icon/fb.png" alt="icon" /></li>
-                                <li><img src="~/assets/icon/tw.png" alt="icon" /></li>
-                                <li><img src="~/assets/icon/lin(2).png" alt="icon" /></li>
-                                <li><img src="~/assets/icon/instagram.png" alt="icon" /></li>
+                                <li>
+                                    <a href="@settings.FirstOrDefault(x => x.Key == "FaceBookUrl").Value">
+                                        <img src="~/assets/icon/fb.png" alt="icon" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@settings.FirstOrDefault(x => x.Key == "TwitterUrl").Value">
+
+                                        <img src="~/assets/icon/tw.png" alt="icon" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@settings.FirstOrDefault(x => x.Key == "LinkednUrl").Value">
+                                        <img src="~/assets/icon/lin(2).png" alt="icon" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@settings.FirstOrDefault(x => x.Key == "InstaUrl").Value">
+                                        <img src="~/assets/icon/instagram.png" alt="icon" />
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 width">
                         <div class="address">
                             <h3>Newsletter </h3>
-                            <input class="form-control" placeholder="Enter your email" type="type" name="Enter your email">
+                            <input class="form-control" placeholder="Enter your email" type="text" name="Enter your email">
                             <button class="submit-btn">Subscribe</button>
                         </div>
                     </div>

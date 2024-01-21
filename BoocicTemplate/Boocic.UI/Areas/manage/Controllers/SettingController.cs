@@ -34,7 +34,7 @@ namespace Boocic.UI.Areas.manage.Controllers
             }
             catch (InvalidIdOrBlowThanZeroException ex)
             {
-                return View();
+                return View("error");
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace Boocic.UI.Areas.manage.Controllers
             }
             catch (InvalidEntityException ex)
             {
-                return View();
+                return View("error");
             }
             catch (Exception ex)
             {
